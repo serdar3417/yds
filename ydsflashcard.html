@@ -1,0 +1,1877 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YDS Kelime Kartları 2026</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #4f46e5;
+            --secondary-color: #10b981;
+            --accent-color: #ec4899;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            transition: background 0.3s, color 0.3s;
+        }
+        
+        .theme-default {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --primary-color: #4f46e5;
+            --secondary-color: #10b981;
+            --accent-color: #ec4899;
+        }
+        
+        .theme-dark {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            --primary-color: #8b5cf6;
+            --secondary-color: #10b981;
+            --accent-color: #f59e0b;
+            color: #f1f5f9;
+        }
+        
+        .theme-nature {
+            background: linear-gradient(135deg, #10b981 0%, #047857 100%);
+            --primary-color: #059669;
+            --secondary-color: #f59e0b;
+            --accent-color: #3b82f6;
+        }
+        
+        .theme-ocean {
+            background: linear-gradient(135deg, #0ea5e9 0%, #1d4ed8 100%);
+            --primary-color: #3b82f6;
+            --secondary-color: #06b6d4;
+            --accent-color: #8b5cf6;
+        }
+        
+        .theme-sunset {
+            background: linear-gradient(135deg, #f97316 0%, #db2777 100%);
+            --primary-color: #f59e0b;
+            --secondary-color: #ec4899;
+            --accent-color: #8b5cf6;
+        }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+        
+        .theme-dark .glass-card {
+            background: rgba(30, 41, 59, 0.95);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #f1f5f9;
+        }
+        
+        .flashcard {
+            perspective: 1000px;
+            height: 400px;
+        }
+        
+        .flashcard-inner {
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .is-flipped {
+            transform: rotateY(180deg);
+        }
+        
+        .flashcard-front, .flashcard-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+        
+        .flashcard-back {
+            transform: rotateY(180deg);
+            background: linear-gradient(135deg, var(--primary-color) 0%, #7c3aed 100%);
+            color: white;
+        }
+        
+        .theme-dark .flashcard-back {
+            background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);
+        }
+        
+        .countdown-box {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.9) 0%, rgba(220, 38, 38, 0.9) 100%);
+            color: white;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .level-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: linear-gradient(135deg, var(--secondary-color) 0%, #059669 100%);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+        
+        .action-btn {
+            transition: all 0.2s ease;
+        }
+        
+        .action-btn:active {
+            transform: scale(0.95);
+        }
+        
+        .difficulty-tag {
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+        
+        .easy-tag {
+            background-color: #d1fae5;
+            color: #065f46;
+        }
+        
+        .medium-tag {
+            background-color: #fef3c7;
+            color: #92400e;
+        }
+        
+        .hard-tag {
+            background-color: #fee2e2;
+            color: #991b1b;
+        }
+        
+        .synonym-tag {
+            background-color: #dbeafe;
+            color: #1e40af;
+        }
+        
+        .antonym-tag {
+            background-color: #fce7f3;
+            color: #9d174d;
+        }
+        
+        .example-box {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 1rem;
+            margin: 0.5rem 0;
+        }
+        
+        .paragraph-box {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
+            padding: 1rem;
+            margin: 0.5rem 0;
+        }
+        
+        .highlight-word {
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 0.1rem 0.3rem;
+            border-radius: 4px;
+            cursor: help;
+            border-bottom: 2px dashed currentColor;
+        }
+        
+        .tooltip {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            text-align: center;
+            padding: 0.5rem;
+            border-radius: 6px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            white-space: nowrap;
+            font-size: 0.75rem;
+        }
+        
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+        }
+        
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .font-size-controls {
+            position: fixed;
+            bottom: 5rem;
+            right: 1rem;
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        
+        .theme-selector {
+            position: fixed;
+            bottom: 5rem;
+            left: 1rem;
+            z-index: 100;
+        }
+        
+        .floating-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .competitor-card {
+            transition: all 0.3s ease;
+            border-width: 2px;
+        }
+        
+        .competitor-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .user-card {
+            border-color: var(--primary-color);
+            background: rgba(79, 70, 229, 0.1);
+        }
+        
+        .competitor-rank-1 {
+            border-color: #f59e0b;
+            background: rgba(245, 158, 11, 0.1);
+        }
+        
+        .competitor-rank-2 {
+            border-color: #94a3b8;
+            background: rgba(148, 163, 184, 0.1);
+        }
+        
+        .competitor-rank-3 {
+            border-color: #f97316;
+            background: rgba(249, 115, 22, 0.1);
+        }
+        
+        .voice-btn {
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            color: white;
+        }
+        
+        .voice-btn:hover {
+            transform: scale(1.1);
+        }
+        
+        .notification {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            z-index: 1000;
+            animation: slideIn 0.3s ease-out;
+        }
+        
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body class="theme-default min-h-screen p-4 transition-all duration-300">
+    <!-- Font Boyutu Kontrolleri -->
+    <div class="font-size-controls">
+        <button id="decrease-font" class="floating-btn bg-white text-gray-800">
+            <i class="fas fa-minus"></i>
+        </button>
+        <button id="increase-font" class="floating-btn bg-white text-gray-800">
+            <i class="fas fa-plus"></i>
+        </button>
+        <button id="speak-current-word" class="floating-btn voice-btn">
+            <i class="fas fa-volume-up"></i>
+        </button>
+    </div>
+    
+    <!-- Tema Seçici -->
+    <div class="theme-selector">
+        <button id="theme-toggle" class="floating-btn bg-white text-gray-800">
+            <i class="fas fa-palette"></i>
+        </button>
+    </div>
+
+    <div id="app" class="max-w-4xl mx-auto">
+        <!-- Başlık ve Geri Sayım -->
+        <header class="glass-card rounded-3xl p-6 mb-6">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-4">
+                <div>
+                    <h1 class="text-3xl font-bold text-gray-800 dark:text-white" id="app-title">YDS Kelime Kartları 2026</h1>
+                    <p class="text-gray-600 dark:text-gray-300" id="app-subtitle">Hedef YDS Tarihi: <span id="exam-date-display">2026-03-15</span></p>
+                </div>
+                
+                <!-- Geri Sayım -->
+                <div class="countdown-box rounded-2xl p-4 text-center min-w-[250px]">
+                    <div class="text-sm font-semibold mb-2">YDS SINAVINA KALAN SÜRE</div>
+                    <div class="flex justify-center gap-3">
+                        <div class="text-center">
+                            <div id="countdown-days" class="text-3xl font-bold">00</div>
+                            <div class="text-sm">GÜN</div>
+                        </div>
+                        <div class="text-center">
+                            <div id="countdown-hours" class="text-3xl font-bold">00</div>
+                            <div class="text-sm">SAAT</div>
+                        </div>
+                        <div class="text-center">
+                            <div id="countdown-minutes" class="text-3xl font-bold">00</div>
+                            <div class="text-sm">DAKİKA</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- İstatistikler -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="text-center p-4 bg-purple-50 dark:bg-purple-900/30 rounded-2xl">
+                    <div id="total-words" class="text-2xl font-bold text-purple-600 dark:text-purple-300">0</div>
+                    <div class="text-sm text-gray-600 dark:text-gray-300">Toplam Kelime</div>
+                </div>
+                <div class="text-center p-4 bg-green-50 dark:bg-green-900/30 rounded-2xl">
+                    <div id="learned-words" class="text-2xl font-bold text-green-600 dark:text-green-300">0</div>
+                    <div class="text-sm text-gray-600 dark:text-gray-300">Öğrenilen</div>
+                </div>
+                <div class="text-center p-4 bg-blue-50 dark:bg-blue-900/30 rounded-2xl">
+                    <div id="user-points" class="text-2xl font-bold text-blue-600 dark:text-blue-300">0</div>
+                    <div class="text-sm text-gray-600 dark:text-gray-300">Puan</div>
+                </div>
+                <div class="text-center p-4 bg-yellow-50 dark:bg-yellow-900/30 rounded-2xl">
+                    <div id="user-level" class="text-2xl font-bold text-yellow-600 dark:text-yellow-300">1</div>
+                    <div class="text-sm text-gray-600 dark:text-gray-300">Seviye</div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Ana İçerik -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <!-- Sol Kolon: Flashcard ve Kontroller -->
+            <div class="lg:col-span-2">
+                <div class="glass-card rounded-3xl p-6 mb-6">
+                    <!-- Flashcard -->
+                    <div id="flashcard" class="flashcard mb-8 cursor-pointer">
+                        <div class="flashcard-inner">
+                            <!-- Ön Yüz -->
+                            <div class="flashcard-front glass-card dark:bg-slate-800/95">
+                                <div class="level-badge" id="current-level">Intermediate</div>
+                                <div class="text-center">
+                                    <div id="word-image" class="w-32 h-32 rounded-2xl mb-4 mx-auto bg-gray-100 dark:bg-slate-700 flex items-center justify-center">
+                                        <i class="fas fa-image text-4xl text-gray-300 dark:text-slate-500"></i>
+                                    </div>
+                                    <h2 id="english-word" class="text-4xl font-bold text-gray-800 dark:text-white mb-2">Loading...</h2>
+                                    <div id="phonetic" class="text-gray-600 dark:text-gray-300 mb-4">/ləʊdɪŋ/</div>
+                                    <div class="text-gray-500 dark:text-gray-400">Kartı çevirmek için tıklayın →</div>
+                                </div>
+                            </div>
+                            
+                            <!-- Arka Yüz -->
+                            <div class="flashcard-back">
+                                <div class="text-center">
+                                    <h2 id="turkish-meaning" class="text-4xl font-bold text-white mb-4">Yükleniyor...</h2>
+                                    <div id="word-type" class="text-white/80 mb-6">İsim</div>
+                                    <div id="quick-info" class="text-white/90 mb-4"></div>
+                                    <div class="text-white/70 text-sm">Tekrar ön yüze dönmek için tıklayın</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Kontrol Butonları -->
+                    <div class="flex flex-wrap justify-center gap-4 mb-8">
+                        <button id="mark-learned" class="action-btn bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-xl font-semibold flex items-center gap-2">
+                            <i class="fas fa-check"></i> Öğrendim (+50 Puan)
+                        </button>
+                        <button id="next-card" class="action-btn bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-xl font-semibold flex items-center gap-2">
+                            <i class="fas fa-arrow-right"></i> Sonraki Kelime
+                        </button>
+                        <button id="speak-english" class="action-btn bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-xl font-semibold flex items-center gap-2">
+                            <i class="fas fa-volume-up"></i> İngilizce Oku
+                        </button>
+                    </div>
+                    
+                    <!-- Detaylar Bölümü -->
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-3 mb-6">
+                        <button id="show-synonyms" class="action-btn bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 px-4 py-3 rounded-xl font-semibold text-sm">
+                            Eş Anlamlılar
+                        </button>
+                        <button id="show-antonyms" class="action-btn bg-pink-100 dark:bg-pink-900/30 text-pink-700 dark:text-pink-300 px-4 py-3 rounded-xl font-semibold text-sm">
+                            Zıt Anlamlılar
+                        </button>
+                        <button id="show-example" class="action-btn bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-300 px-4 py-3 rounded-xl font-semibold text-sm">
+                            Örnek Cümle
+                        </button>
+                        <button id="show-easy-paragraph" class="action-btn bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 px-4 py-3 rounded-xl font-semibold text-sm">
+                            Kolay Paragraf
+                        </button>
+                        <button id="show-medium-paragraph" class="action-btn bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300 px-4 py-3 rounded-xl font-semibold text-sm">
+                            Orta Paragraf
+                        </button>
+                        <button id="show-hard-paragraph" class="action-btn bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300 px-4 py-3 rounded-xl font-semibold text-sm">
+                            Zor Paragraf
+                        </button>
+                    </div>
+                    
+                    <!-- İçerik Gösterim Alanı -->
+                    <div id="content-display" class="content-card glass-card dark:bg-slate-800/95 rounded-2xl p-6 hidden">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 id="content-title" class="text-lg font-bold text-gray-800 dark:text-white"></h3>
+                            <button id="close-content" class="text-gray-400 hover:text-gray-600 dark:text-gray-400 dark:hover:text-gray-200">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                        <div id="content-body" class="text-gray-700 dark:text-gray-300"></div>
+                    </div>
+                </div>
+                
+                <!-- Kelime Yönetimi -->
+                <div class="glass-card rounded-3xl p-6">
+                    <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-4">Kelime Yönetimi</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-3 mb-6">
+                        <button id="add-word-btn" class="action-btn bg-green-500 hover:bg-green-600 text-white py-3 rounded-xl font-semibold flex items-center justify-center gap-2">
+                            <i class="fas fa-plus"></i> Yeni Kelime
+                        </button>
+                        <button id="export-json-btn" class="action-btn bg-blue-500 hover:bg-blue-600 text-white py-3 rounded-xl font-semibold flex items-center justify-center gap-2">
+                            <i class="fas fa-download"></i> JSON Aktar
+                        </button>
+                        <label class="action-btn bg-purple-500 hover:bg-purple-600 text-white py-3 rounded-xl font-semibold flex items-center justify-center gap-2 cursor-pointer">
+                            <i class="fas fa-upload"></i> JSON Yükle
+                            <input type="file" id="json-file-input" class="hidden" accept=".json">
+                        </label>
+                    </div>
+                    
+                    <!-- Kelime Listesi -->
+                    <div class="max-h-64 overflow-y-auto scrollbar-hide">
+                        <table class="w-full">
+                            <thead>
+                                <tr class="border-b dark:border-gray-700">
+                                    <th class="text-left py-2 text-sm text-gray-600 dark:text-gray-400">İngilizce</th>
+                                    <th class="text-left py-2 text-sm text-gray-600 dark:text-gray-400">Türkçe</th>
+                                    <th class="text-left py-2 text-sm text-gray-600 dark:text-gray-400">İşlem</th>
+                                </tr>
+                            </thead>
+                            <tbody id="word-list">
+                                <!-- Kelimeler buraya eklenecek -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Sağ Kolon: Rekabet ve Ayarlar -->
+            <div class="space-y-6">
+                <!-- YDS Tarihi Ayarları -->
+                <div class="glass-card rounded-3xl p-6">
+                    <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-4">YDS Tarihi</h3>
+                    <div class="space-y-3">
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Sınav Tarihi</label>
+                            <input type="date" id="exam-date-input" class="w-full p-3 bg-gray-50 dark:bg-slate-700 border border-gray-300 dark:border-slate-600 rounded-xl">
+                        </div>
+                        <button id="save-exam-date" class="w-full bg-red-500 hover:bg-red-600 text-white py-3 rounded-xl font-semibold">
+                            Tarihi Kaydet
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Rekabet Liderliği -->
+                <div class="glass-card rounded-3xl p-6">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-lg font-bold text-gray-800 dark:text-white">YDS Rekabeti</h3>
+                        <button id="add-competitor-btn" class="text-sm bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded-lg">
+                            + Rakipler
+                        </button>
+                    </div>
+                    
+                    <div class="space-y-3" id="competitors-list">
+                        <!-- Rakip kartları buraya eklenecek -->
+                    </div>
+                </div>
+                
+                <!-- Tema Seçimi -->
+                <div class="glass-card rounded-3xl p-6">
+                    <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-4">Temalar</h3>
+                    <div class="grid grid-cols-2 gap-3">
+                        <button data-theme="default" class="theme-option p-4 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 text-white font-semibold">
+                            Varsayılan
+                        </button>
+                        <button data-theme="dark" class="theme-option p-4 rounded-xl bg-gradient-to-br from-slate-800 to-slate-900 text-white font-semibold">
+                            Koyu Mod
+                        </button>
+                        <button data-theme="nature" class="theme-option p-4 rounded-xl bg-gradient-to-br from-green-500 to-emerald-700 text-white font-semibold">
+                            Doğa
+                        </button>
+                        <button data-theme="ocean" class="theme-option p-4 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 text-white font-semibold">
+                            Okyanus
+                        </button>
+                        <button data-theme="sunset" class="theme-option p-4 rounded-xl bg-gradient-to-br from-orange-500 to-pink-600 text-white font-semibold">
+                            Gün Batımı
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modallar -->
+    
+    <!-- Kelime Ekleme/Düzenleme Modalı -->
+    <div id="word-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 hidden z-50">
+        <div class="glass-card dark:bg-slate-800 rounded-3xl p-6 max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-2xl font-bold text-gray-800 dark:text-white" id="modal-title">Yeni Kelime Ekle</h3>
+                <button id="close-modal" class="text-gray-400 hover:text-gray-600 dark:text-gray-400 dark:hover:text-gray-200">
+                    <i class="fas fa-times text-2xl"></i>
+                </button>
+            </div>
+            
+            <div class="space-y-4">
+                <!-- Temel Bilgiler -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">İngilizce Kelime *</label>
+                        <input type="text" id="word-en" class="w-full p-3 bg-gray-50 dark:bg-slate-700 border border-gray-300 dark:border-slate-600 rounded-xl" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Türkçe Anlamı *</label>
+                        <input type="text" id="word-tr" class="w-full p-3 bg-gray-50 dark:bg-slate-700 border border-gray-300 dark:border-slate-600 rounded-xl" required>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Kelime Türü</label>
+                        <select id="word-type-select" class="w-full p-3 bg-gray-50 dark:bg-slate-700 border border-gray-300 dark:border-slate-600 rounded-xl">
+                            <option value="Noun">İsim</option>
+                            <option value="Verb">Fiil</option>
+                            <option value="Adjective">Sıfat</option>
+                            <option value="Adverb">Zarf</option>
+                            <option value="Phrase">Deyim</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Zorluk Seviyesi</label>
+                        <select id="word-level-select" class="w-full p-3 bg-gray-50 dark:bg-slate-700 border border-gray-300 dark:border-slate-600 rounded-xl">
+                            <option value="Easy">Kolay</option>
+                            <option value="Intermediate">Orta</option>
+                            <option value="Advanced">Zor</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <!-- Resim Yükleme -->
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Kelime Resmi (Opsiyonel)</label>
+                    <div class="border-2 border-dashed border-gray-300 dark:border-slate-600 rounded-xl p-6 text-center cursor-pointer hover:border-purple-400 transition-colors" 
+                         onclick="document.getElementById('image-upload').click()">
+                        <i class="fas fa-cloud-upload-alt text-3xl text-gray-400 dark:text-slate-500 mb-2"></i>
+                        <div class="text-gray-600 dark:text-gray-400">Resim yüklemek için tıklayın</div>
+                        <div class="text-sm text-gray-500 dark:text-gray-500 mt-1">PNG, JPG, GIF (Max 2MB)</div>
+                        <input type="file" id="image-upload" class="hidden" accept="image/*">
+                    </div>
+                    <div id="image-preview" class="mt-4 hidden">
+                        <img id="preview-image" class="w-32 h-32 rounded-xl object-cover">
+                    </div>
+                </div>
+                
+                <!-- Eş Anlamlılar -->
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Eş Anlamlılar (Virgülle ayırın)</label>
+                    <input type="text" id="word-synonyms" class="w-full p-3 bg-gray-50 dark:bg-slate-700 border border-gray-300 dark:border-slate-600 rounded-xl" placeholder="Örnek: analyze, examine, study">
+                </div>
+                
+                <!-- Zıt Anlamlılar -->
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Zıt Anlamlılar (Virgülle ayırın)</label>
+                    <input type="text" id="word-antonyms" class="w-full p-3 bg-gray-50 dark:bg-slate-700 border border-gray-300 dark:border-slate-600 rounded-xl" placeholder="Örnek: combine, synthesize">
+                </div>
+                
+                <!-- Örnek Cümle -->
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Örnek Cümle</label>
+                    <textarea id="word-example" class="w-full p-3 bg-gray-50 dark:bg-slate-700 border border-gray-300 dark:border-slate-600 rounded-xl h-24" placeholder="Örnek: We need to analyze the data carefully."></textarea>
+                </div>
+                
+                <!-- Paragraflar -->
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Kolay Paragraf</label>
+                        <textarea id="easy-paragraph" class="w-full p-3 bg-gray-50 dark:bg-slate-700 border border-gray-300 dark:border-slate-600 rounded-xl h-32" 
+                                  placeholder="Kelimelerin basit cümlelerle kullanıldığı kısa paragraf..."></textarea>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Orta Paragraf</label>
+                        <textarea id="medium-paragraph" class="w-full p-3 bg-gray-50 dark:bg-slate-700 border border-gray-300 dark:border-slate-600 rounded-xl h-32" 
+                                  placeholder="Kelimelerin orta düzey cümlelerle kullanıldığı paragraf..."></textarea>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Zor Paragraf</label>
+                        <textarea id="hard-paragraph" class="w-full p-3 bg-gray-50 dark:bg-slate-700 border border-gray-300 dark:border-slate-600 rounded-xl h-32" 
+                                  placeholder="Kelimelerin akademik ve kompleks cümlelerle kullanıldığı paragraf..."></textarea>
+                    </div>
+                </div>
+                
+                <!-- Kaydet Butonu -->
+                <div class="pt-4">
+                    <button id="save-word-btn" class="w-full bg-purple-600 hover:bg-purple-700 text-white py-4 rounded-xl font-bold text-lg transition-colors">
+                        Kelimeyi Kaydet
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Rakip Ekleme Modalı -->
+    <div id="competitor-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 hidden z-50">
+        <div class="glass-card dark:bg-slate-800 rounded-3xl p-6 max-w-md w-full">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-2xl font-bold text-gray-800 dark:text-white">Yeni Rakip Ekle</h3>
+                <button id="close-competitor-modal" class="text-gray-400 hover:text-gray-600 dark:text-gray-400 dark:hover:text-gray-200">
+                    <i class="fas fa-times text-2xl"></i>
+                </button>
+            </div>
+            
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Rakip İsmi</label>
+                    <input type="text" id="competitor-name" class="w-full p-3 bg-gray-50 dark:bg-slate-700 border border-gray-300 dark:border-slate-600 rounded-xl" placeholder="Örn: Mehmet Yılmaz">
+                </div>
+                
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Başlangıç Puanı</label>
+                    <input type="number" id="competitor-points" class="w-full p-3 bg-gray-50 dark:bg-slate-700 border border-gray-300 dark:border-slate-600 rounded-xl" value="1000">
+                </div>
+                
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Profil Resmi (Opsiyonel)</label>
+                    <div class="border-2 border-dashed border-gray-300 dark:border-slate-600 rounded-xl p-4 text-center cursor-pointer" 
+                         onclick="document.getElementById('competitor-image-upload').click()">
+                        <i class="fas fa-user-circle text-3xl text-gray-400 dark:text-slate-500 mb-2"></i>
+                        <div class="text-gray-600 dark:text-gray-400">Profil resmi yükleyin</div>
+                        <input type="file" id="competitor-image-upload" class="hidden" accept="image/*">
+                    </div>
+                </div>
+                
+                <div class="pt-4">
+                    <button id="save-competitor-btn" class="w-full bg-green-600 hover:bg-green-700 text-white py-4 rounded-xl font-bold text-lg transition-colors">
+                        Rakibi Ekle
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Başlangıç verileri
+        let vocabulary = [
+            {
+                id: 1,
+                en: "Analysis",
+                tr: "Analiz",
+                type: "Noun",
+                level: "Intermediate",
+                synonyms: ["examination", "study", "investigation"],
+                antonyms: ["synthesis", "combination"],
+                example: "The analysis of the data took several weeks to complete.",
+                image: "",
+                learned: false,
+                points: 0,
+                easyParagraph: "Analysis means looking at something carefully. For example, when we do homework analysis (analiz), we check our answers. Simple analysis helps us learn better.",
+                mediumParagraph: "Statistical analysis (analiz) involves examining data to find patterns. In research analysis, scientists review their findings carefully. Proper analysis leads to better conclusions.",
+                hardParagraph: "Comprehensive data analysis (analiz) requires sophisticated methodologies (yöntemler) and rigorous scrutiny (inceleme). The multifaceted (çok yönlü) analysis conducted by the research team yielded groundbreaking (çığır açan) insights into the complex interplay (etkileşim) of variables, fundamentally altering our understanding of the phenomenon (olgusal).",
+                paragraphWords: {
+                    "methodologies": "yöntemler",
+                    "scrutiny": "inceleme",
+                    "multifaceted": "çok yönlü",
+                    "groundbreaking": "çığır açan",
+                    "interplay": "etkileşim",
+                    "phenomenon": "olgusal"
+                }
+            },
+            {
+                id: 2,
+                en: "Significant",
+                tr: "Önemli",
+                type: "Adjective",
+                level: "Intermediate",
+                synonyms: ["important", "notable", "considerable"],
+                antonyms: ["insignificant", "trivial", "minor"],
+                example: "There was a significant improvement in test scores.",
+                image: "",
+                learned: true,
+                points: 50,
+                easyParagraph: "This is a significant (önemli) day because it's my birthday. Getting good grades is significant for students.",
+                mediumParagraph: "The discovery had significant (önemli) implications for future research. Significant changes in policy often require careful consideration.",
+                hardParagraph: "The ostensibly (görünüşte) negligible (önemsiz) fluctuations (dalgalanmalar) manifested significant (önemli) repercussions (etkiler) on the macroeconomic equilibrium (denge), thereby necessitating a comprehensive reassessment of fiscal (mali) policies by the governing authorities.",
+                paragraphWords: {
+                    "ostensibly": "görünüşte",
+                    "negligible": "önemsiz",
+                    "fluctuations": "dalgalanmalar",
+                    "repercussions": "etkiler",
+                    "equilibrium": "denge",
+                    "fiscal": "mali"
+                }
+            }
+        ];
+
+        // Sanal rakipler
+        let competitors = [
+            {
+                id: 1,
+                name: "Ahmet Kaya",
+                points: 1850,
+                level: 2,
+                isVirtual: true,
+                avatar: "👨‍🎓",
+                lastActive: "2 saat önce"
+            },
+            {
+                id: 2,
+                name: "Zeynep Demir",
+                points: 2450,
+                level: 3,
+                isVirtual: true,
+                avatar: "👩‍💼",
+                lastActive: "1 gün önce"
+            },
+            {
+                id: 3,
+                name: "Mehmet Yılmaz",
+                points: 1200,
+                level: 2,
+                isVirtual: true,
+                avatar: "🧑‍🔬",
+                lastActive: "4 saat önce"
+            }
+        ];
+
+        // Kullanıcı durumu
+        let userState = {
+            id: 0,
+            name: "Siz",
+            points: 100,
+            level: 1,
+            totalWords: 0,
+            learnedWords: 0,
+            currentWordIndex: 0,
+            editingWordId: null,
+            examDate: "2026-03-15",
+            theme: "default",
+            fontSize: 16
+        };
+
+        // DOM Elementleri
+        const elements = {
+            // Ana elementler
+            app: document.getElementById('app'),
+            appTitle: document.getElementById('app-title'),
+            appSubtitle: document.getElementById('app-subtitle'),
+            
+            // Flashcard
+            flashcard: document.getElementById('flashcard'),
+            englishWord: document.getElementById('english-word'),
+            turkishMeaning: document.getElementById('turkish-meaning'),
+            wordImage: document.getElementById('word-image'),
+            wordType: document.getElementById('word-type'),
+            currentLevel: document.getElementById('current-level'),
+            phonetic: document.getElementById('phonetic'),
+            quickInfo: document.getElementById('quick-info'),
+            
+            // Kontrol butonları
+            markLearned: document.getElementById('mark-learned'),
+            nextCard: document.getElementById('next-card'),
+            speakEnglish: document.getElementById('speak-english'),
+            speakCurrentWord: document.getElementById('speak-current-word'),
+            
+            // Detay butonları
+            showSynonyms: document.getElementById('show-synonyms'),
+            showAntonyms: document.getElementById('show-antonyms'),
+            showExample: document.getElementById('show-example'),
+            showEasyParagraph: document.getElementById('show-easy-paragraph'),
+            showMediumParagraph: document.getElementById('show-medium-paragraph'),
+            showHardParagraph: document.getElementById('show-hard-paragraph'),
+            
+            // İçerik gösterimi
+            contentDisplay: document.getElementById('content-display'),
+            contentTitle: document.getElementById('content-title'),
+            contentBody: document.getElementById('content-body'),
+            closeContent: document.getElementById('close-content'),
+            
+            // İstatistikler
+            totalWords: document.getElementById('total-words'),
+            learnedWords: document.getElementById('learned-words'),
+            userPoints: document.getElementById('user-points'),
+            userLevel: document.getElementById('user-level'),
+            
+            // Geri sayım
+            examDateDisplay: document.getElementById('exam-date-display'),
+            countdownDays: document.getElementById('countdown-days'),
+            countdownHours: document.getElementById('countdown-hours'),
+            countdownMinutes: document.getElementById('countdown-minutes'),
+            
+            // Kelime yönetimi
+            wordList: document.getElementById('word-list'),
+            addWordBtn: document.getElementById('add-word-btn'),
+            exportJsonBtn: document.getElementById('export-json-btn'),
+            importJsonBtn: document.getElementById('json-file-input'),
+            
+            // YDS tarihi
+            examDateInput: document.getElementById('exam-date-input'),
+            saveExamDate: document.getElementById('save-exam-date'),
+            
+            // Rekabet
+            competitorsList: document.getElementById('competitors-list'),
+            addCompetitorBtn: document.getElementById('add-competitor-btn'),
+            
+            // Temalar
+            themeOptions: document.querySelectorAll('.theme-option'),
+            themeToggle: document.getElementById('theme-toggle'),
+            
+            // Font kontrolleri
+            decreaseFont: document.getElementById('decrease-font'),
+            increaseFont: document.getElementById('increase-font'),
+            
+            // Modal elementleri
+            wordModal: document.getElementById('word-modal'),
+            modalTitle: document.getElementById('modal-title'),
+            closeModal: document.getElementById('close-modal'),
+            saveWordBtn: document.getElementById('save-word-btn'),
+            
+            // Word form
+            wordEn: document.getElementById('word-en'),
+            wordTr: document.getElementById('word-tr'),
+            wordTypeSelect: document.getElementById('word-type-select'),
+            wordLevelSelect: document.getElementById('word-level-select'),
+            wordSynonyms: document.getElementById('word-synonyms'),
+            wordAntonyms: document.getElementById('word-antonyms'),
+            wordExample: document.getElementById('word-example'),
+            easyParagraph: document.getElementById('easy-paragraph'),
+            mediumParagraph: document.getElementById('medium-paragraph'),
+            hardParagraph: document.getElementById('hard-paragraph'),
+            imageUpload: document.getElementById('image-upload'),
+            imagePreview: document.getElementById('image-preview'),
+            previewImage: document.getElementById('preview-image'),
+            
+            // Competitor modal
+            competitorModal: document.getElementById('competitor-modal'),
+            closeCompetitorModal: document.getElementById('close-competitor-modal'),
+            competitorName: document.getElementById('competitor-name'),
+            competitorPoints: document.getElementById('competitor-points'),
+            saveCompetitorBtn: document.getElementById('save-competitor-btn')
+        };
+
+        // Uygulama başlatma
+        function initApp() {
+            loadFromLocalStorage();
+            updateUserStats();
+            updateWordList();
+            updateCompetitorsList();
+            showCurrentWord();
+            updateCountdown();
+            setupEventListeners();
+            setTheme(userState.theme);
+            updateFontSize();
+            
+            // Geri sayımı başlat
+            startCountdown();
+            
+            // Rakiplerin puanlarını rastgele güncelle (simülasyon)
+            setInterval(updateCompetitorPoints, 30000);
+        }
+
+        // Event listener'ları kur
+        function setupEventListeners() {
+            // Flashcard çevirme
+            elements.flashcard.addEventListener('click', () => {
+                elements.flashcard.querySelector('.flashcard-inner').classList.toggle('is-flipped');
+            });
+
+            // Kelime öğrenildi işaretle
+            elements.markLearned.addEventListener('click', markWordAsLearned);
+
+            // Sonraki kelime
+            elements.nextCard.addEventListener('click', showNextWord);
+
+            // Seslendirme butonları
+            elements.speakEnglish.addEventListener('click', speakEnglishWord);
+            elements.speakCurrentWord.addEventListener('click', speakCurrentWordFunc);
+
+            // Detay butonları
+            elements.showSynonyms.addEventListener('click', () => showContent('Eş Anlamlılar', getSynonymsContent()));
+            elements.showAntonyms.addEventListener('click', () => showContent('Zıt Anlamlılar', getAntonymsContent()));
+            elements.showExample.addEventListener('click', () => showContent('Örnek Cümle', getExampleContent()));
+            elements.showEasyParagraph.addEventListener('click', () => showContent('Kolay Paragraf', getParagraphContent('easyParagraph')));
+            elements.showMediumParagraph.addEventListener('click', () => showContent('Orta Paragraf', getParagraphContent('mediumParagraph')));
+            elements.showHardParagraph.addEventListener('click', () => showContent('Zor Paragraf', getParagraphContent('hardParagraph')));
+
+            // İçerik kapatma
+            elements.closeContent.addEventListener('click', () => {
+                elements.contentDisplay.classList.add('hidden');
+            });
+
+            // Kelime yönetimi
+            elements.addWordBtn.addEventListener('click', () => openWordModal());
+            elements.exportJsonBtn.addEventListener('click', exportVocabularyJSON);
+            elements.importJsonBtn.addEventListener('change', importVocabularyJSON);
+            
+            // YDS tarihi
+            elements.examDateInput.value = userState.examDate;
+            elements.saveExamDate.addEventListener('click', saveExamDate);
+            
+            // Rekabet
+            elements.addCompetitorBtn.addEventListener('click', openCompetitorModal);
+            
+            // Temalar
+            elements.themeOptions.forEach(option => {
+                option.addEventListener('click', () => {
+                    const theme = option.dataset.theme;
+                    setTheme(theme);
+                });
+            });
+            
+            elements.themeToggle.addEventListener('click', toggleThemeMenu);
+            
+            // Font kontrolleri
+            elements.decreaseFont.addEventListener('click', decreaseFontSize);
+            elements.increaseFont.addEventListener('click', increaseFontSize);
+            
+            // Modal kontrolleri
+            elements.closeModal.addEventListener('click', () => closeWordModal());
+            elements.saveWordBtn.addEventListener('click', saveWord);
+            
+            elements.closeCompetitorModal.addEventListener('click', () => closeCompetitorModal());
+            elements.saveCompetitorBtn.addEventListener('click', saveCompetitor);
+            
+            // Resim yükleme
+            elements.imageUpload.addEventListener('change', handleImageUpload);
+            
+            // Dışarı tıklayarak modal kapatma
+            window.addEventListener('click', (e) => {
+                if (e.target === elements.wordModal) closeWordModal();
+                if (e.target === elements.competitorModal) closeCompetitorModal();
+            });
+        }
+
+        // Mevcut kelimeyi göster
+        function showCurrentWord() {
+            if (vocabulary.length === 0) {
+                elements.englishWord.textContent = "Kelime Yok";
+                elements.turkishMeaning.textContent = "Lütfen kelime ekleyin";
+                return;
+            }
+
+            const word = vocabulary[userState.currentWordIndex];
+            
+            // Ön yüz
+            elements.englishWord.textContent = word.en;
+            elements.currentLevel.textContent = word.level;
+            elements.phonetic.textContent = getPhonetic(word.en);
+            
+            // Resim gösterimi
+            if (word.image) {
+                elements.wordImage.innerHTML = `<img src="${word.image}" class="w-full h-full object-cover rounded-2xl">`;
+            } else {
+                elements.wordImage.innerHTML = `<i class="fas fa-image text-4xl text-gray-300 dark:text-slate-500"></i>`;
+            }
+            
+            // Arka yüz
+            elements.turkishMeaning.textContent = word.tr;
+            elements.wordType.textContent = word.type;
+            elements.quickInfo.innerHTML = `
+                <div class="flex gap-2 mb-2">
+                    <span class="difficulty-tag ${getDifficultyClass(word.level)}">${word.level}</span>
+                    ${word.learned ? '<span class="difficulty-tag bg-green-100 text-green-800">✓ Öğrenildi</span>' : ''}
+                </div>
+                <div>${word.synonyms.slice(0, 2).map(s => `<span class="synonym-tag inline-block mr-1 mb-1">${s}</span>`).join('')}</div>
+            `;
+        }
+
+        // Sonraki kelimeyi göster
+        function showNextWord() {
+            if (vocabulary.length === 0) return;
+            
+            userState.currentWordIndex = (userState.currentWordIndex + 1) % vocabulary.length;
+            elements.flashcard.querySelector('.flashcard-inner').classList.remove('is-flipped');
+            showCurrentWord();
+            elements.contentDisplay.classList.add('hidden');
+        }
+
+        // Kelimeyi öğrenildi olarak işaretle
+        function markWordAsLearned() {
+            if (vocabulary.length === 0) return;
+            
+            const word = vocabulary[userState.currentWordIndex];
+            if (!word.learned) {
+                word.learned = true;
+                word.points = 50;
+                userState.points += 50;
+                userState.learnedWords++;
+                
+                // Seviye kontrolü
+                checkLevelUp();
+                
+                // Rakiplerin puanını da güncelle (simülasyon)
+                updateCompetitorPointsRandomly();
+                
+                updateUserStats();
+                updateWordList();
+                updateCompetitorsList();
+                showCurrentWord();
+                
+                // Başarı mesajı
+                showNotification(`Tebrikler! "${word.en}" kelimesini öğrendiniz. +50 puan kazandınız!`, 'success');
+            }
+        }
+
+        // İçerik gösterimi
+        function showContent(title, content) {
+            elements.contentTitle.textContent = title;
+            elements.contentBody.innerHTML = content;
+            elements.contentDisplay.classList.remove('hidden');
+            
+            // Paragraflarda kelime tooltip'lerini kur
+            if (title.includes('Paragraf')) {
+                setupWordTooltips();
+            }
+        }
+
+        // Eş anlamlılar içeriği
+        function getSynonymsContent() {
+            const word = vocabulary[userState.currentWordIndex];
+            return `
+                <div class="space-y-3">
+                    <p class="text-gray-600 dark:text-gray-400 mb-3">"${word.en}" kelimesinin eş anlamlıları:</p>
+                    ${word.synonyms.map(syn => `
+                        <div class="example-box">
+                            <div class="font-semibold mb-1">${syn}</div>
+                            <div class="text-sm text-gray-600 dark:text-gray-400">Örnek: The ${syn} of the results showed interesting patterns.</div>
+                        </div>
+                    `).join('')}
+                    <div class="text-xs text-gray-500 dark:text-gray-500 mt-4">
+                        <i class="fas fa-lightbulb mr-1"></i> Eş anlamlı kelimeleri öğrenmek YDS'de kelime dağarcığınızı geliştirir.
+                    </div>
+                </div>
+            `;
+        }
+
+        // Zıt anlamlılar içeriği
+        function getAntonymsContent() {
+            const word = vocabulary[userState.currentWordIndex];
+            if (!word.antonyms || word.antonyms.length === 0) {
+                return '<div class="text-gray-600 dark:text-gray-400 italic">Bu kelime için zıt anlamlı belirtilmemiş.</div>';
+            }
+            
+            return `
+                <div class="space-y-3">
+                    <p class="text-gray-600 dark:text-gray-400 mb-3">"${word.en}" kelimesinin zıt anlamlıları:</p>
+                    ${word.antonyms.map(ant => `
+                        <div class="example-box">
+                            <div class="font-semibold mb-1">${ant}</div>
+                            <div class="text-sm text-gray-600 dark:text-gray-400">Örnek: The ${ant} of elements created a new compound.</div>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+        }
+
+        // Örnek cümle içeriği
+        function getExampleContent() {
+            const word = vocabulary[userState.currentWordIndex];
+            return `
+                <div class="example-box">
+                    <div class="font-semibold mb-2">Örnek Cümle:</div>
+                    <div class="text-lg italic mb-4">"${word.example}"</div>
+                    <div class="text-sm text-gray-600 dark:text-gray-400">
+                        <i class="fas fa-volume-up mr-1"></i>
+                        <button onclick="speakText('${word.example.replace(/'/g, "\\'")}', 'en')" class="text-blue-500 hover:text-blue-700 dark:text-blue-400">
+                            İngilizce dinle
+                        </button>
+                        <span class="mx-2">•</span>
+                        <button onclick="speakText('${word.tr}', 'tr')" class="text-green-500 hover:text-green-700 dark:text-green-400">
+                            Türkçe dinle
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Paragraf içeriği
+        function getParagraphContent(paragraphType) {
+            const word = vocabulary[userState.currentWordIndex];
+            const paragraph = word[paragraphType];
+            const difficulty = paragraphType.replace('Paragraph', '');
+            
+            let difficultyText = '';
+            switch(difficulty) {
+                case 'easy': difficultyText = 'Kolay'; break;
+                case 'medium': difficultyText = 'Orta'; break;
+                case 'hard': difficultyText = 'Zor'; break;
+            }
+            
+            // Paragraftaki zor kelimeleri işaretle
+            let processedParagraph = paragraph;
+            if (word.paragraphWords) {
+                Object.keys(word.paragraphWords).forEach(hardWord => {
+                    const translation = word.paragraphWords[hardWord];
+                    const escapedWord = hardWord.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+                    processedParagraph = processedParagraph.replace(
+                        new RegExp(`\\b${escapedWord}\\b`, 'gi'),
+                        `<span class="highlight-word tooltip">${hardWord}<span class="tooltiptext">${translation}</span></span>`
+                    );
+                });
+            }
+            
+            return `
+                <div class="space-y-4">
+                    <div class="difficulty-tag ${getDifficultyClass(difficultyText)} inline-block">${difficultyText} Seviye</div>
+                    
+                    <div class="paragraph-box">
+                        ${processedParagraph}
+                    </div>
+                    
+                    ${word.paragraphWords && Object.keys(word.paragraphWords).length > 0 ? `
+                        <div>
+                            <div class="font-semibold mb-2">Paragraftaki Zor Kelimeler:</div>
+                            <div class="grid grid-cols-2 gap-2">
+                                ${Object.entries(word.paragraphWords).map(([enWord, trMeaning]) => `
+                                    <div class="bg-gray-100 dark:bg-slate-700 px-3 py-2 rounded-lg">
+                                        <span class="font-medium">${enWord}</span>
+                                        <span class="text-gray-600 dark:text-gray-400">: ${trMeaning}</span>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    ` : ''}
+                    
+                    <div class="text-sm text-gray-600 dark:text-gray-400 mt-4">
+                        <i class="fas fa-info-circle mr-1"></i> Zor kelimelerin üzerine gelerek Türkçe anlamlarını görebilirsiniz.
+                    </div>
+                </div>
+            `;
+        }
+
+        // Paragraftaki kelimeler için tooltip kurulumu
+        function setupWordTooltips() {
+            const highlightedWords = elements.contentBody.querySelectorAll('.highlight-word');
+            highlightedWords.forEach(word => {
+                word.addEventListener('mouseenter', function(e) {
+                    const tooltip = this.querySelector('.tooltiptext');
+                    const rect = this.getBoundingClientRect();
+                    tooltip.style.left = '50%';
+                    tooltip.style.transform = 'translateX(-50%)';
+                });
+            });
+        }
+
+        // Kullanıcı istatistiklerini güncelle
+        function updateUserStats() {
+            userState.totalWords = vocabulary.length;
+            userState.learnedWords = vocabulary.filter(word => word.learned).length;
+            userState.level = Math.floor(userState.points / 1000) + 1;
+            
+            elements.totalWords.textContent = userState.totalWords;
+            elements.learnedWords.textContent = userState.learnedWords;
+            elements.userPoints.textContent = userState.points;
+            elements.userLevel.textContent = userState.level;
+            
+            // Sıralamayı güncelle
+            updateCompetitorsList();
+            saveToLocalStorage();
+        }
+
+        // Seviye atlama kontrolü
+        function checkLevelUp() {
+            const oldLevel = Math.floor((userState.points - 50) / 1000) + 1;
+            const newLevel = userState.level;
+            
+            if (newLevel > oldLevel) {
+                showNotification(`🎉 Tebrikler! Seviye ${newLevel}'e yükseldiniz!`, 'success');
+            }
+        }
+
+        // Kelime listesini güncelle
+        function updateWordList() {
+            elements.wordList.innerHTML = vocabulary.map(word => `
+                <tr class="border-b dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-slate-700/50">
+                    <td class="py-3">
+                        <div class="font-medium dark:text-white">${word.en}</div>
+                        <div class="text-xs text-gray-500 dark:text-gray-400">${word.type}</div>
+                    </td>
+                    <td class="py-3 dark:text-white">${word.tr}</td>
+                    <td class="py-3">
+                        <div class="flex gap-2">
+                            <button onclick="editWord(${word.id})" class="text-blue-600 hover:text-blue-800 dark:text-blue-400">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <button onclick="deleteWord(${word.id})" class="text-red-600 hover:text-red-800 dark:text-red-400">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                            ${word.learned ? '<span class="text-green-600 dark:text-green-400"><i class="fas fa-check"></i></span>' : ''}
+                        </div>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        // Rakipler listesini güncelle
+        function updateCompetitorsList() {
+            // Tüm oyuncuları birleştir ve sırala
+            const allPlayers = [
+                {
+                    id: 0,
+                    name: userState.name,
+                    points: userState.points,
+                    level: userState.level,
+                    isUser: true,
+                    avatar: "👤"
+                },
+                ...competitors
+            ].sort((a, b) => b.points - a.points);
+            
+            // Sıralamayı belirle
+            allPlayers.forEach((player, index) => {
+                player.rank = index + 1;
+            });
+            
+            elements.competitorsList.innerHTML = allPlayers.map(player => {
+                const rankClass = player.rank === 1 ? 'competitor-rank-1' : 
+                                player.rank === 2 ? 'competitor-rank-2' : 
+                                player.rank === 3 ? 'competitor-rank-3' : '';
+                
+                return `
+                    <div class="competitor-card glass-card dark:bg-slate-800/95 rounded-2xl p-4 ${player.isUser ? 'user-card' : rankClass}">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-3">
+                                <div class="text-2xl">${player.avatar}</div>
+                                <div>
+                                    <div class="font-bold dark:text-white">${player.name} ${player.isUser ? '(Siz)' : ''}</div>
+                                    <div class="text-sm text-gray-600 dark:text-gray-400">Seviye ${player.level}</div>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <div class="font-bold text-lg ${player.rank <= 3 ? 'text-yellow-600 dark:text-yellow-400' : 'text-gray-800 dark:text-white'}">
+                                    ${player.points} Puan
+                                </div>
+                                <div class="text-xs ${player.rank <= 3 ? 'text-yellow-700 dark:text-yellow-500' : 'text-gray-600 dark:text-gray-400'}">
+                                    #${player.rank}
+                                </div>
+                            </div>
+                        </div>
+                        ${!player.isUser && player.lastActive ? `
+                            <div class="text-xs text-gray-500 dark:text-gray-500 mt-2">
+                                <i class="fas fa-clock mr-1"></i> ${player.lastActive}
+                            </div>
+                        ` : ''}
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Rakip puanlarını rastgele güncelle (simülasyon)
+        function updateCompetitorPoints() {
+            competitors.forEach(competitor => {
+                if (competitor.isVirtual) {
+                    // Rastgele puan değişimi (-50 ile +150 arası)
+                    const change = Math.floor(Math.random() * 200) - 50;
+                    competitor.points = Math.max(0, competitor.points + change);
+                    competitor.level = Math.floor(competitor.points / 1000) + 1;
+                    
+                    // Son aktif zamanını güncelle
+                    const times = ['5 dakika önce', '15 dakika önce', '1 saat önce', '2 saat önce', '1 gün önce'];
+                    competitor.lastActive = times[Math.floor(Math.random() * times.length)];
+                }
+            });
+            
+            updateCompetitorsList();
+        }
+
+        // Rakiplerin puanını rastgele güncelle (kullanıcı puan kazandığında)
+        function updateCompetitorPointsRandomly() {
+            competitors.forEach(competitor => {
+                if (competitor.isVirtual && Math.random() > 0.5) {
+                    // Bazı rakipler de puan kazansın
+                    const change = Math.floor(Math.random() * 100) + 10;
+                    competitor.points += change;
+                    competitor.level = Math.floor(competitor.points / 1000) + 1;
+                }
+            });
+        }
+
+        // Geri sayımı güncelle
+        function updateCountdown() {
+            const now = new Date();
+            const examDate = new Date(userState.examDate + 'T00:00:00');
+            const timeDiff = examDate - now;
+            
+            if (timeDiff > 0) {
+                const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+                
+                elements.countdownDays.textContent = days.toString().padStart(2, '0');
+                elements.countdownHours.textContent = hours.toString().padStart(2, '0');
+                elements.countdownMinutes.textContent = minutes.toString().padStart(2, '0');
+                elements.examDateDisplay.textContent = userState.examDate;
+            } else {
+                elements.countdownDays.textContent = '00';
+                elements.countdownHours.textContent = '00';
+                elements.countdownMinutes.textContent = '00';
+            }
+        }
+
+        // Geri sayımı başlat
+        function startCountdown() {
+            updateCountdown();
+            setInterval(updateCountdown, 60000); // Her dakika güncelle
+        }
+
+        // YDS tarihini kaydet
+        function saveExamDate() {
+            const newDate = elements.examDateInput.value;
+            if (newDate) {
+                userState.examDate = newDate;
+                updateCountdown();
+                showNotification('YDS tarihi güncellendi!', 'success');
+                saveToLocalStorage();
+            }
+        }
+
+        // Tema ayarla
+        function setTheme(theme) {
+            userState.theme = theme;
+            document.body.className = `theme-${theme} min-h-screen p-4 transition-all duration-300`;
+            
+            // Aktif tema butonunu vurgula
+            elements.themeOptions.forEach(option => {
+                if (option.dataset.theme === theme) {
+                    option.classList.add('ring-2', 'ring-white', 'ring-opacity-50');
+                } else {
+                    option.classList.remove('ring-2', 'ring-white', 'ring-opacity-50');
+                }
+            });
+            
+            saveToLocalStorage();
+        }
+
+        // Tema menüsünü aç/kapat
+        function toggleThemeMenu() {
+            const themeSelector = document.querySelector('.theme-selector');
+            const currentDisplay = themeSelector.style.display;
+            themeSelector.style.display = currentDisplay === 'none' ? 'block' : 'none';
+        }
+
+        // Font boyutunu azalt
+        function decreaseFontSize() {
+            if (userState.fontSize > 12) {
+                userState.fontSize -= 1;
+                updateFontSize();
+            }
+        }
+
+        // Font boyutunu artır
+        function increaseFontSize() {
+            if (userState.fontSize < 24) {
+                userState.fontSize += 1;
+                updateFontSize();
+            }
+        }
+
+        // Font boyutunu güncelle
+        function updateFontSize() {
+            document.documentElement.style.fontSize = `${userState.fontSize}px`;
+            saveToLocalStorage();
+        }
+
+        // Kelime modalını aç
+        function openWordModal(wordId = null) {
+            elements.modalTitle.textContent = wordId ? 'Kelime Düzenle' : 'Yeni Kelime Ekle';
+            elements.wordModal.classList.remove('hidden');
+            
+            if (wordId) {
+                const word = vocabulary.find(w => w.id === wordId);
+                if (word) {
+                    elements.wordEn.value = word.en;
+                    elements.wordTr.value = word.tr;
+                    elements.wordTypeSelect.value = word.type;
+                    elements.wordLevelSelect.value = word.level;
+                    elements.wordSynonyms.value = Array.isArray(word.synonyms) ? word.synonyms.join(', ') : word.synonyms || '';
+                    elements.wordAntonyms.value = Array.isArray(word.antonyms) ? word.antonyms.join(', ') : word.antonyms || '';
+                    elements.wordExample.value = word.example || '';
+                    elements.easyParagraph.value = word.easyParagraph || '';
+                    elements.mediumParagraph.value = word.mediumParagraph || '';
+                    elements.hardParagraph.value = word.hardParagraph || '';
+                    
+                    if (word.image) {
+                        elements.imagePreview.classList.remove('hidden');
+                        elements.previewImage.src = word.image;
+                    }
+                    
+                    userState.editingWordId = wordId;
+                }
+            } else {
+                resetWordForm();
+            }
+        }
+
+        // Kelime formunu sıfırla
+        function resetWordForm() {
+            elements.wordEn.value = '';
+            elements.wordTr.value = '';
+            elements.wordTypeSelect.value = 'Noun';
+            elements.wordLevelSelect.value = 'Intermediate';
+            elements.wordSynonyms.value = '';
+            elements.wordAntonyms.value = '';
+            elements.wordExample.value = '';
+            elements.easyParagraph.value = '';
+            elements.mediumParagraph.value = '';
+            elements.hardParagraph.value = '';
+            elements.imagePreview.classList.add('hidden');
+            elements.previewImage.src = '';
+            elements.imageUpload.value = '';
+            userState.editingWordId = null;
+        }
+
+        // Kelime modalını kapat
+        function closeWordModal() {
+            elements.wordModal.classList.add('hidden');
+            resetWordForm();
+        }
+
+        // Rakip modalını aç
+        function openCompetitorModal() {
+            elements.competitorModal.classList.remove('hidden');
+        }
+
+        // Rakip modalını kapat
+        function closeCompetitorModal() {
+            elements.competitorModal.classList.add('hidden');
+            elements.competitorName.value = '';
+            elements.competitorPoints.value = '1000';
+        }
+
+        // Kelime kaydet
+        function saveWord() {
+            if (!elements.wordEn.value.trim() || !elements.wordTr.value.trim()) {
+                showNotification('İngilizce ve Türkçe kelime alanları zorunludur!', 'error');
+                return;
+            }
+
+            const wordData = {
+                id: userState.editingWordId || Date.now(),
+                en: elements.wordEn.value.trim(),
+                tr: elements.wordTr.value.trim(),
+                type: elements.wordTypeSelect.value,
+                level: elements.wordLevelSelect.value,
+                synonyms: elements.wordSynonyms.value.split(',').map(s => s.trim()).filter(s => s),
+                antonyms: elements.wordAntonyms.value.split(',').map(s => s.trim()).filter(s => s),
+                example: elements.wordExample.value.trim(),
+                easyParagraph: elements.easyParagraph.value.trim(),
+                mediumParagraph: elements.mediumParagraph.value.trim(),
+                hardParagraph: elements.hardParagraph.value.trim(),
+                image: elements.previewImage.src || '',
+                learned: false,
+                points: 0
+            };
+
+            // Paragraf kelimelerini otomatik oluştur
+            wordData.paragraphWords = extractHardWords(wordData.hardParagraph);
+
+            if (userState.editingWordId) {
+                const index = vocabulary.findIndex(w => w.id === userState.editingWordId);
+                if (index !== -1) {
+                    vocabulary[index] = { ...vocabulary[index], ...wordData };
+                }
+            } else {
+                vocabulary.push(wordData);
+            }
+
+            updateUserStats();
+            updateWordList();
+            
+            if (vocabulary.length === 1) {
+                showCurrentWord();
+            }
+            
+            closeWordModal();
+            showNotification(`"${wordData.en}" kelimesi başarıyla kaydedildi!`, 'success');
+        }
+
+        // Rakip kaydet
+        function saveCompetitor() {
+            const name = elements.competitorName.value.trim();
+            const points = parseInt(elements.competitorPoints.value) || 1000;
+            
+            if (!name) {
+                showNotification('Rakip ismi giriniz!', 'error');
+                return;
+            }
+            
+            const newCompetitor = {
+                id: Date.now(),
+                name: name,
+                points: points,
+                level: Math.floor(points / 1000) + 1,
+                isVirtual: false,
+                avatar: "👤",
+                lastActive: "Şimdi"
+            };
+            
+            competitors.push(newCompetitor);
+            updateCompetitorsList();
+            closeCompetitorModal();
+            showNotification(`${name} rakip olarak eklendi!`, 'success');
+            saveToLocalStorage();
+        }
+
+        // Kelime düzenle
+        function editWord(id) {
+            openWordModal(id);
+        }
+
+        // Kelime sil
+        function deleteWord(id) {
+            if (confirm('Bu kelimeyi silmek istediğinize emin misiniz?')) {
+                const index = vocabulary.findIndex(w => w.id === id);
+                if (index !== -1) {
+                    const word = vocabulary[index];
+                    
+                    // Öğrenilmişse puanı düş
+                    if (word.learned) {
+                        userState.points = Math.max(0, userState.points - 50);
+                        userState.learnedWords = Math.max(0, userState.learnedWords - 1);
+                    }
+                    
+                    vocabulary.splice(index, 1);
+                    
+                    // Güncel kelime indeksini ayarla
+                    if (userState.currentWordIndex >= vocabulary.length) {
+                        userState.currentWordIndex = Math.max(0, vocabulary.length - 1);
+                    }
+                    
+                    updateUserStats();
+                    updateWordList();
+                    showCurrentWord();
+                    showNotification(`"${word.en}" kelimesi silindi.`, 'info');
+                }
+            }
+        }
+
+        // JSON olarak dışa aktar
+        function exportVocabularyJSON() {
+            const data = {
+                vocabulary: vocabulary,
+                userState: userState,
+                competitors: competitors,
+                exportDate: new Date().toISOString()
+            };
+            
+            const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `yds_kelimeler_${new Date().toISOString().slice(0, 10)}.json`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            
+            showNotification('Kelimeler JSON formatında dışa aktarıldı!', 'success');
+        }
+
+        // JSON'dan içe aktar
+        function importVocabularyJSON(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            if (!confirm('Mevcut tüm verilerin üzerine yazılacak. Devam etmek istiyor musunuz?')) {
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    const data = JSON.parse(e.target.result);
+                    
+                    if (data.vocabulary) {
+                        vocabulary = data.vocabulary;
+                    }
+                    if (data.userState) {
+                        userState = data.userState;
+                    }
+                    if (data.competitors) {
+                        competitors = data.competitors;
+                    }
+                    
+                    updateUserStats();
+                    updateWordList();
+                    updateCompetitorsList();
+                    showCurrentWord();
+                    updateCountdown();
+                    setTheme(userState.theme);
+                    updateFontSize();
+                    
+                    showNotification('Veriler başarıyla içe aktarıldı!', 'success');
+                } catch (error) {
+                    showNotification('Dosya okunurken hata oluştu!', 'error');
+                    console.error(error);
+                }
+            };
+            reader.readAsText(file);
+            
+            event.target.value = '';
+        }
+
+        // Resim yükleme işlemi
+        function handleImageUpload(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            if (file.size > 2 * 1024 * 1024) {
+                showNotification('Resim boyutu 2MB\'dan küçük olmalıdır!', 'error');
+                return;
+            }
+
+            if (!file.type.match('image.*')) {
+                showNotification('Lütfen sadece resim dosyası yükleyin!', 'error');
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                elements.imagePreview.classList.remove('hidden');
+                elements.previewImage.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+
+        // Zor paragraftan kelimeleri çıkar
+        function extractHardWords(paragraph) {
+            if (!paragraph) return {};
+            
+            const hardWords = {};
+            const words = paragraph.split(/\s+/);
+            const longWords = words.filter(word => {
+                const cleanWord = word.replace(/[^a-zA-Z]/g, '');
+                return cleanWord.length > 10 && !hardWords[cleanWord.toLowerCase()];
+            });
+            
+            // Örnek çeviriler (gerçek uygulamada bir API kullanılmalı)
+            const sampleTranslations = {
+                "comprehensive": "kapsamlı",
+                "sophisticated": "sofistike",
+                "methodologies": "yöntemler",
+                "scrutiny": "inceleme",
+                "multifaceted": "çok yönlü",
+                "groundbreaking": "çığır açan",
+                "interplay": "etkileşim",
+                "phenomenon": "olgusal",
+                "ostensibly": "görünüşte",
+                "negligible": "önemsiz",
+                "fluctuations": "dalgalanmalar",
+                "repercussions": "etkiler",
+                "equilibrium": "denge",
+                "fiscal": "mali"
+            };
+            
+            longWords.forEach(word => {
+                const cleanWord = word.replace(/[^a-zA-Z]/g, '');
+                if (sampleTranslations[cleanWord.toLowerCase()]) {
+                    hardWords[cleanWord] = sampleTranslations[cleanWord.toLowerCase()];
+                }
+            });
+            
+            return hardWords;
+        }
+
+        // Zorluk seviyesine göre CSS sınıfı
+        function getDifficultyClass(level) {
+            switch(level) {
+                case 'Easy': return 'easy-tag';
+                case 'Intermediate': return 'medium-tag';
+                case 'Advanced': return 'hard-tag';
+                default: return 'medium-tag';
+            }
+        }
+
+        // Basit fonetik gösterim
+        function getPhonetic(word) {
+            const phonetics = {
+                'analysis': '/əˈnæləsɪs/',
+                'significant': '/sɪɡˈnɪfɪkənt/',
+                'concept': '/ˈkɒnsept/',
+                'develop': '/dɪˈveləp/',
+                'education': '/ˌedʒuˈkeɪʃən/',
+                'important': '/ɪmˈpɔːrtnt/',
+                'knowledge': '/ˈnɒlɪdʒ/',
+                'language': '/ˈlæŋɡwɪdʒ/',
+                'practice': '/ˈpræktɪs/',
+                'vocabulary': '/vəˈkæbjəleri/'
+            };
+            
+            return phonetics[word.toLowerCase()] || '/ˈwɜːd/';
+        }
+
+        // İngilizce kelimeyi seslendir
+        function speakEnglishWord() {
+            const word = vocabulary[userState.currentWordIndex];
+            if (word) {
+                speakText(word.en, 'en');
+            }
+        }
+
+        // Mevcut kelimeyi seslendir
+        function speakCurrentWordFunc() {
+            const word = vocabulary[userState.currentWordIndex];
+            if (word) {
+                const isFlipped = elements.flashcard.querySelector('.flashcard-inner').classList.contains('is-flipped');
+                if (isFlipped) {
+                    speakText(word.tr, 'tr');
+                } else {
+                    speakText(word.en, 'en');
+                }
+            }
+        }
+
+        // Metni seslendir
+        function speakText(text, lang) {
+            if ('speechSynthesis' in window) {
+                // Mevcut konuşmayı durdur
+                window.speechSynthesis.cancel();
+                
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = lang === 'en' ? 'en-US' : 'tr-TR';
+                utterance.rate = 0.8;
+                utterance.volume = 1;
+                
+                // Dil'e göre ses seç
+                const voices = window.speechSynthesis.getVoices();
+                let voice;
+                
+                if (lang === 'en') {
+                    voice = voices.find(v => v.lang.startsWith('en') && v.name.includes('English'));
+                } else {
+                    voice = voices.find(v => v.lang.startsWith('tr') || v.lang.startsWith('tr-TR'));
+                }
+                
+                if (voice) {
+                    utterance.voice = voice;
+                }
+                
+                window.speechSynthesis.speak(utterance);
+            } else {
+                showNotification('Tarayıcınız metin okuma özelliğini desteklemiyor.', 'error');
+            }
+        }
+
+        // Bildirim göster
+        function showNotification(message, type = 'info') {
+            // Önceki bildirimleri temizle
+            const existingNotifications = document.querySelectorAll('.notification');
+            existingNotifications.forEach(notif => notif.remove());
+            
+            const notification = document.createElement('div');
+            notification.className = `notification ${
+                type === 'success' ? 'bg-green-500' : 
+                type === 'error' ? 'bg-red-500' : 
+                type === 'warning' ? 'bg-yellow-500' : 
+                'bg-blue-500'
+            } text-white`;
+            notification.textContent = message;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.opacity = '0';
+                notification.style.transform = 'translateY(-20px)';
+                setTimeout(() => {
+                    if (notification.parentNode) {
+                        notification.parentNode.removeChild(notification);
+                    }
+                }, 300);
+            }, 3000);
+        }
+
+        // Local storage'a kaydet
+        function saveToLocalStorage() {
+            const data = {
+                vocabulary: vocabulary,
+                userState: userState,
+                competitors: competitors
+            };
+            localStorage.setItem('ydsFlashcardsPro', JSON.stringify(data));
+        }
+
+        // Local storage'dan yükle
+        function loadFromLocalStorage() {
+            const saved = localStorage.getItem('ydsFlashcardsPro');
+            if (saved) {
+                try {
+                    const data = JSON.parse(saved);
+                    vocabulary = data.vocabulary || vocabulary;
+                    userState = data.userState || userState;
+                    competitors = data.competitors || competitors;
+                } catch (e) {
+                    console.error('Local storage verisi okunamadı:', e);
+                }
+            }
+        }
+
+        // Uygulama başlat
+        window.onload = function() {
+            initApp();
+            
+            // SpeechSynthesis seslerini yükle
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.getVoices();
+            }
+        };
+
+        // Global fonksiyonlar
+        window.editWord = editWord;
+        window.deleteWord = deleteWord;
+        window.speakText = speakText;
+    </script>
+</body>
+</html>
