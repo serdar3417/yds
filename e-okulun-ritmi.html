@@ -1,0 +1,457 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>E-Okulun Ritmi | Tek Sayfa Prototip</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+    :root {
+      --brand-1: #5b7cfa;
+      --brand-2: #8b5cf6;
+      --ok: #198754;
+      --warn: #ffc107;
+      --danger: #dc3545;
+      --ink: #0f172a;
+    }
+
+    body {
+      background: linear-gradient(135deg, #f8fafc 0%, #eef2ff 55%, #fdf4ff 100%);
+      color: var(--ink);
+      min-height: 100vh;
+    }
+
+    .hero {
+      background: radial-gradient(circle at top right, rgba(139, 92, 246, 0.18), transparent 45%),
+                  radial-gradient(circle at top left, rgba(59, 130, 246, 0.18), transparent 40%),
+                  #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 1rem;
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+    }
+
+    .card-soft {
+      border: 1px solid #e2e8f0;
+      border-radius: 1rem;
+      box-shadow: 0 8px 24px rgba(2, 6, 23, 0.06);
+    }
+
+    .metric-pill {
+      border-radius: 999px;
+      font-size: .85rem;
+      padding: .35rem .8rem;
+      border: 1px solid #e2e8f0;
+      background: #fff;
+    }
+
+    #visualizer {
+      width: 100%;
+      height: 180px;
+      border-radius: .75rem;
+      background: linear-gradient(180deg, #0f172a 0%, #1e293b 100%);
+      border: 1px solid #1f2937;
+      display: block;
+    }
+
+    .result-box {
+      background: #fff;
+      border: 1px dashed #cbd5e1;
+      border-radius: .75rem;
+      padding: .9rem;
+      min-height: 80px;
+    }
+
+    .table td,
+    .table th {
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body>
+  <main class="container py-4 py-lg-5">
+    <section class="hero p-4 p-lg-5 mb-4">
+      <div class="d-flex flex-column flex-lg-row justify-content-between gap-3 align-items-start align-items-lg-center">
+        <div>
+          <h1 class="h3 mb-2">🎵 E-Okulun Ritmi</h1>
+          <p class="mb-0 text-secondary">
+            Akademik veriyi <strong>müziğe</strong> dönüştüren tek sayfa prototip.
+            Notlar, davranış, devamsızlık ve ödüllerle kişisel bir “eğitim senfonisi” üretir.
+          </p>
+        </div>
+        <div class="d-flex gap-2 flex-wrap">
+          <span class="metric-pill">Web Audio API</span>
+          <span class="metric-pill">Bootstrap 5</span>
+          <span class="metric-pill">JavaScript</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="row g-4">
+      <section class="col-lg-6">
+        <div class="card-soft p-4 h-100">
+          <h2 class="h5 mb-3">1) Öğrenci Verisi Gir</h2>
+
+          <div class="row g-3">
+            <div class="col-sm-6">
+              <label class="form-label" for="studentName">Öğrenci Adı</label>
+              <input id="studentName" class="form-control" placeholder="Örn. Elif Kaya" />
+            </div>
+            <div class="col-sm-6">
+              <label class="form-label" for="gradeLevel">Sınıf</label>
+              <select id="gradeLevel" class="form-select">
+                <option value="5">5. Sınıf</option>
+                <option value="6">6. Sınıf</option>
+                <option value="7" selected>7. Sınıf</option>
+                <option value="8">8. Sınıf</option>
+                <option value="9">9. Sınıf</option>
+                <option value="10">10. Sınıf</option>
+                <option value="11">11. Sınıf</option>
+                <option value="12">12. Sınıf</option>
+              </select>
+            </div>
+
+            <div class="col-12">
+              <label class="form-label">Ders Notları (0-100)</label>
+              <div class="table-responsive">
+                <table class="table table-sm align-middle mb-0">
+                  <thead>
+                    <tr>
+                      <th>Ders</th>
+                      <th>Not</th>
+                    </tr>
+                  </thead>
+                  <tbody id="courseRows"></tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <label class="form-label" for="behavior">Davranış Puanı (0-100)</label>
+              <input id="behavior" type="number" min="0" max="100" class="form-control" value="85" />
+            </div>
+            <div class="col-sm-6">
+              <label class="form-label" for="attendance">Devamsızlık (Gün)</label>
+              <input id="attendance" type="number" min="0" max="60" class="form-control" value="2" />
+            </div>
+
+            <div class="col-sm-6">
+              <label class="form-label" for="awards">Ödül / Belge Sayısı</label>
+              <input id="awards" type="number" min="0" max="20" class="form-control" value="1" />
+            </div>
+            <div class="col-sm-6">
+              <label class="form-label" for="improvement">Not Değişim Hızı</label>
+              <select id="improvement" class="form-select">
+                <option value="-1">Düşüş Eğilimi</option>
+                <option value="0" selected>Stabil</option>
+                <option value="1">Yükseliş Eğilimi</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="d-grid gap-2 d-sm-flex mt-4">
+            <button id="generateBtn" class="btn btn-primary">Senfoni Oluştur</button>
+            <button id="playBtn" class="btn btn-success" disabled>▶ Çal</button>
+            <button id="stopBtn" class="btn btn-outline-secondary" disabled>■ Durdur</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="col-lg-6">
+        <div class="card-soft p-4 h-100">
+          <h2 class="h5 mb-3">2) Senfoni Çıktısı</h2>
+
+          <div class="row g-2 mb-3" id="insights"></div>
+
+          <canvas id="visualizer" width="920" height="180" aria-label="Müzik görselleştirici"></canvas>
+
+          <div class="result-box mt-3" id="compositionSummary">
+            Henüz senfoni oluşturulmadı.
+          </div>
+
+          <hr />
+          <h3 class="h6">Veri → Müzik Eşleme</h3>
+          <ul class="small text-secondary mb-0">
+            <li>Not Ortalaması → Ton (düşük not = minör, yüksek not = majör)</li>
+            <li>Not Değişim Hızı → Tempo</li>
+            <li>Davranış Puanı → Armoni yoğunluğu</li>
+            <li>Devamsızlık → Sus (sessizlik) oranı</li>
+            <li>Ödüller → Özel motif tekrarları</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    const courses = ["Türkçe", "Matematik", "Fen Bilimleri", "Sosyal Bilgiler", "İngilizce", "Müzik"];
+
+    const courseRows = document.getElementById("courseRows");
+    const generateBtn = document.getElementById("generateBtn");
+    const playBtn = document.getElementById("playBtn");
+    const stopBtn = document.getElementById("stopBtn");
+    const compositionSummary = document.getElementById("compositionSummary");
+    const insights = document.getElementById("insights");
+    const canvas = document.getElementById("visualizer");
+    const ctx = canvas.getContext("2d");
+
+    let audioContext;
+    let masterGain;
+    let activeNodes = [];
+    let animationFrameId;
+    let currentPlan = null;
+
+    function buildCourseInputs() {
+      const defaultScores = [82, 75, 88, 80, 90, 95];
+      courseRows.innerHTML = courses
+        .map((course, i) => `
+          <tr>
+            <td>${course}</td>
+            <td>
+              <input type="number" class="form-control form-control-sm grade-input"
+                min="0" max="100" value="${defaultScores[i]}" />
+            </td>
+          </tr>
+        `)
+        .join("");
+    }
+
+    function clamp(value, min, max) {
+      return Math.min(max, Math.max(min, value));
+    }
+
+    function collectData() {
+      const studentName = document.getElementById("studentName").value.trim() || "İsimsiz Öğrenci";
+      const gradeLevel = Number(document.getElementById("gradeLevel").value);
+      const behavior = clamp(Number(document.getElementById("behavior").value) || 0, 0, 100);
+      const attendance = clamp(Number(document.getElementById("attendance").value) || 0, 0, 60);
+      const awards = clamp(Number(document.getElementById("awards").value) || 0, 0, 20);
+      const improvement = Number(document.getElementById("improvement").value);
+
+      const grades = [...document.querySelectorAll(".grade-input")].map(input => clamp(Number(input.value) || 0, 0, 100));
+      const avg = grades.reduce((a, b) => a + b, 0) / grades.length;
+
+      return { studentName, gradeLevel, behavior, attendance, awards, improvement, grades, avg };
+    }
+
+    function mapToMusic(data) {
+      const baseFrequencies = data.avg >= 70
+        ? [261.63, 293.66, 329.63, 392.00, 440.00, 523.25]
+        : [220.00, 261.63, 293.66, 329.63, 392.00, 440.00];
+
+      const tempo = 70 + (data.improvement * 20) + (data.avg / 10);
+      const beatDuration = 60 / clamp(tempo, 60, 160);
+      const harmonyChance = data.behavior / 120;
+      const silenceChance = data.attendance / 80;
+      const motifRepeats = Math.max(1, Math.min(4, Math.floor(data.awards / 2) + 1));
+
+      const pattern = data.grades.map((grade, idx) => {
+        const noteIndex = Math.floor((grade / 100) * (baseFrequencies.length - 1));
+        const frequency = baseFrequencies[noteIndex];
+        const velocity = 0.25 + (grade / 100) * 0.45;
+        const isSilence = Math.random() < silenceChance;
+        const withHarmony = Math.random() < harmonyChance;
+
+        return {
+          step: idx,
+          frequency,
+          velocity,
+          duration: beatDuration * (idx % 2 === 0 ? 0.9 : 0.7),
+          isSilence,
+          withHarmony,
+        };
+      });
+
+      const motif = [
+        { frequency: baseFrequencies[1], duration: beatDuration * 0.5, velocity: 0.55 },
+        { frequency: baseFrequencies[3], duration: beatDuration * 0.5, velocity: 0.6 },
+        { frequency: baseFrequencies[5] || baseFrequencies[baseFrequencies.length - 1], duration: beatDuration * 0.8, velocity: 0.65 },
+      ];
+
+      return { tempo: Math.round(tempo), beatDuration, pattern, motif, motifRepeats, mode: data.avg >= 70 ? "Majör" : "Minör" };
+    }
+
+    function renderInsights(data, music) {
+      const items = [
+        [`Not Ort.`, data.avg.toFixed(1)],
+        [`Tempo`, `${music.tempo} BPM`],
+        [`Ton`, music.mode],
+        [`Motif`, `${music.motifRepeats} tekrar`],
+      ];
+
+      insights.innerHTML = items
+        .map(([k, v]) => `
+          <div class="col-6 col-md-3">
+            <div class="border rounded-3 p-2 bg-light-subtle text-center h-100">
+              <div class="small text-secondary">${k}</div>
+              <div class="fw-semibold">${v}</div>
+            </div>
+          </div>
+        `)
+        .join("");
+
+      compositionSummary.innerHTML = `
+        <strong>${data.studentName}</strong> için senfoni hazırlandı.<br>
+        ${data.gradeLevel}. sınıf verileri ile <strong>${music.mode}</strong> tonda,
+        <strong>${music.tempo} BPM</strong> hızında bir parça üretildi.
+        Davranış puanı armoniyi, devamsızlık sessizlikleri,
+        ödüller ise özel motif tekrarlarını etkiledi.
+      `;
+    }
+
+    function ensureAudio() {
+      if (!audioContext) {
+        audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        masterGain = audioContext.createGain();
+        masterGain.gain.value = 0.85;
+        masterGain.connect(audioContext.destination);
+      }
+      if (audioContext.state === "suspended") {
+        audioContext.resume();
+      }
+    }
+
+    function stopPlayback() {
+      activeNodes.forEach(node => {
+        try { node.stop?.(); } catch (_) {}
+        try { node.disconnect?.(); } catch (_) {}
+      });
+      activeNodes = [];
+
+      if (animationFrameId) cancelAnimationFrame(animationFrameId);
+      drawIdle();
+
+      playBtn.disabled = !currentPlan;
+      stopBtn.disabled = true;
+    }
+
+    function scheduleNote(time, frequency, duration, velocity, withHarmony = false) {
+      const osc = audioContext.createOscillator();
+      const gain = audioContext.createGain();
+      osc.type = "sine";
+      osc.frequency.value = frequency;
+
+      gain.gain.setValueAtTime(0.0001, time);
+      gain.gain.exponentialRampToValueAtTime(velocity, time + 0.02);
+      gain.gain.exponentialRampToValueAtTime(0.0001, time + duration);
+
+      osc.connect(gain);
+      gain.connect(masterGain);
+      osc.start(time);
+      osc.stop(time + duration + 0.02);
+      activeNodes.push(osc, gain);
+
+      if (withHarmony) {
+        const hOsc = audioContext.createOscillator();
+        const hGain = audioContext.createGain();
+        hOsc.type = "triangle";
+        hOsc.frequency.value = frequency * 1.25;
+
+        hGain.gain.setValueAtTime(0.0001, time);
+        hGain.gain.exponentialRampToValueAtTime(velocity * 0.55, time + 0.03);
+        hGain.gain.exponentialRampToValueAtTime(0.0001, time + duration);
+
+        hOsc.connect(hGain);
+        hGain.connect(masterGain);
+        hOsc.start(time);
+        hOsc.stop(time + duration + 0.03);
+        activeNodes.push(hOsc, hGain);
+      }
+    }
+
+    function playPlan(plan) {
+      ensureAudio();
+      stopPlayback();
+
+      const start = audioContext.currentTime + 0.06;
+      let t = start;
+
+      plan.pattern.forEach(p => {
+        if (!p.isSilence) {
+          scheduleNote(t, p.frequency, p.duration, p.velocity, p.withHarmony);
+        }
+        t += plan.beatDuration;
+      });
+
+      for (let i = 0; i < plan.motifRepeats; i++) {
+        plan.motif.forEach(m => {
+          scheduleNote(t, m.frequency, m.duration, m.velocity, true);
+          t += m.duration;
+        });
+      }
+
+      playBtn.disabled = true;
+      stopBtn.disabled = false;
+      animateBars(t - start);
+
+      setTimeout(() => {
+        playBtn.disabled = false;
+        stopBtn.disabled = true;
+      }, Math.max(0, (t - audioContext.currentTime) * 1000));
+    }
+
+    function drawIdle() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = "#1e293b";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      ctx.fillStyle = "#94a3b8";
+      ctx.font = "16px sans-serif";
+      ctx.fillText("Müzik görselleştirici beklemede...", 24, canvas.height / 2);
+    }
+
+    function animateBars(durationSeconds) {
+      const bars = 44;
+      const started = performance.now();
+
+      function frame(now) {
+        const elapsed = (now - started) / 1000;
+
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
+        gradient.addColorStop(0, "#0f172a");
+        gradient.addColorStop(1, "#1e293b");
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        for (let i = 0; i < bars; i++) {
+          const x = (canvas.width / bars) * i + 2;
+          const wave = Math.abs(Math.sin(elapsed * 4 + i * 0.5));
+          const h = 18 + wave * (canvas.height * 0.75);
+          const y = canvas.height - h;
+          const w = (canvas.width / bars) - 5;
+
+          ctx.fillStyle = `hsl(${220 + i * 2}, 80%, ${50 + wave * 15}%)`;
+          ctx.fillRect(x, y, w, h);
+        }
+
+        if (elapsed < durationSeconds + 0.2) {
+          animationFrameId = requestAnimationFrame(frame);
+        } else {
+          drawIdle();
+        }
+      }
+
+      animationFrameId = requestAnimationFrame(frame);
+    }
+
+    generateBtn.addEventListener("click", () => {
+      const data = collectData();
+      const music = mapToMusic(data);
+      currentPlan = music;
+
+      renderInsights(data, music);
+      playBtn.disabled = false;
+    });
+
+    playBtn.addEventListener("click", () => {
+      if (!currentPlan) return;
+      playPlan(currentPlan);
+    });
+
+    stopBtn.addEventListener("click", stopPlayback);
+
+    buildCourseInputs();
+    drawIdle();
+  </script>
+</body>
+</html>
